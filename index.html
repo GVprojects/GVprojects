@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects Hub | Premium Project & Research Solutions</title>
+    <title>GVprojects | Premium Software & Research Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -350,9 +350,21 @@
         /* Services Section */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 35px;
             margin-top: 50px;
+        }
+
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .service-card {
@@ -446,9 +458,21 @@
         /* Pricing Section */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted min-width for more cards */
+            grid-template-columns: repeat(3, 1fr);
             gap: 35px;
             margin-top: 50px;
+        }
+
+        @media (max-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .pricing-card {
@@ -465,13 +489,13 @@
 
         .pricing-card.popular {
             border-color: var(--premium-gold);
-            transform: scale(1.02); /* Reduced scale slightly for aesthetics */
+            transform: scale(1.02);
             z-index: 1;
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.95));
         }
 
         .pricing-card.popular::before {
-            content: "BEST VALUE"; /* Changed text from MOST POPULAR to BEST VALUE */
+            content: "BEST VALUE";
             position: absolute;
             top: -15px;
             left: 50%;
@@ -532,7 +556,6 @@
             font-weight: 400;
         }
         
-        /* Combo Price Styling */
         .pricing-header .combo-price {
             font-size: 1.1rem;
             color: var(--success-green);
@@ -570,7 +593,7 @@
             text-decoration: line-through;
         }
 
-        /* Contact Section - ADJUSTED FOR FORM REMOVAL */
+        /* Contact Section */
         .contact-section {
             background: linear-gradient(135deg, rgba(0, 102, 204, 0.1) 0%, rgba(0, 180, 216, 0.05) 100%);
             border-radius: var(--border-radius);
@@ -607,7 +630,6 @@
         }
 
         .contact-content {
-            /* Modified to be a single column for the contact info */
             display: flex; 
             flex-direction: column;
             align-items: center;
@@ -616,9 +638,9 @@
         
         .contact-info {
             display: flex;
-            flex-direction: row; /* Changed to row for horizontal layout */
-            justify-content: center; /* Center the items */
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 30px;
             width: 100%;
         }
@@ -632,7 +654,7 @@
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
-            max-width: 350px; /* Limit width of contact items */
+            max-width: 350px;
         }
 
         .contact-item:hover {
@@ -680,8 +702,6 @@
             color: white;
             text-decoration: underline;
         }
-        
-        /* Form styles removed as requested */
 
         /* Footer */
         .footer {
@@ -791,7 +811,6 @@
             }
             
             .contact-content {
-                /* Revert to one column layout if form is removed and on smaller screens */
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -852,17 +871,12 @@
                 font-size: 2.2rem;
             }
             
-            .services-grid,
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .hero-image-container {
                 height: 400px;
             }
             
             .contact-info {
-                flex-direction: column; /* Stack contact items vertically */
+                flex-direction: column;
                 align-items: center;
             }
             
@@ -919,8 +933,8 @@
         <div class="container">
             <div class="header-content">
                 <a href="#" class="logo">
-                    <div class="logo-icon">PH</div>
-                    <div class="logo-text">Projects<span>Hub</span></div>
+                    <div class="logo-icon">GV</div>
+                    <div class="logo-text">GV<span>projects</span></div>
                 </a>
 
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -941,11 +955,14 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Premium Project Solutions for <span>Academic & Professional Excellence</span></h1>
-                    <p>We deliver fully functional projects, cutting-edge AI/ML solutions, and premium research papers with 0% AI detection guarantee. Professional guidance, installation, and deployment included.</p>
+                    <h1>Welcome to <span>GVprojects</span></h1>
+                    <p>Professional Software & Research Solutions with 100% client satisfaction. We deliver high-quality academic and software services with free installation and support.</p>
                     
                     <div class="hero-stats">
-                        
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Projects Delivered</span>
+                        </div>
                         <div class="stat-item">
                             <span class="stat-number">100%</span>
                             <span class="stat-label">Client Satisfaction</span>
@@ -968,10 +985,10 @@
                 
                 <div class="hero-image">
                     <div class="hero-image-container">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Professional Project Development">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Professional Software Development">
                         <div class="image-overlay">
-                            <h3>Professional Development Team</h3>
-                            <p>Expert developers, researchers, and AI specialists working on your projects</p>
+                            <h3>Expert Development Team</h3>
+                            <p>Python, HTML/CSS, JavaScript, Flask, SQL, AI/ML specialists</p>
                         </div>
                     </div>
                 </div>
@@ -983,37 +1000,77 @@
         <div class="container">
             <div class="section-title">
                 <h2>Our Premium Services</h2>
-                <p>Comprehensive solutions with professional implementation, detailed documentation, and ongoing support included</p>
+                <p>Comprehensive solutions with professional implementation using cutting-edge technologies</p>
             </div>
 
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
+                        <i class="fab fa-python"></i>
                     </div>
-                    <h3>Complete Project Development</h3>
-                    <p>Fully functional, professionally developed projects with clean architecture, modern design, and comprehensive documentation for academic and commercial use.</p>
+                    <h3>Python Development</h3>
+                    <p>Custom Python applications with clean architecture, modern design, and comprehensive documentation.</p>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Custom development tailored to requirements</li>
-                        <li><i class="fas fa-check"></i> Latest technologies & industry best practices</li>
-                        <li><i class="fas fa-check"></i> Responsive design & user-friendly UI/UX</li>
-                        <li><i class="fas fa-check"></i> Free installation, setup & deployment</li>
-                        <li><i class="fas fa-check"></i> Detailed documentation & source code</li>
+                        <li><i class="fas fa-check"></i> Web apps with Flask/Django</li>
+                        <li><i class="fas fa-check"></i> Desktop applications</li>
+                        <li><i class="fas fa-check"></i> Automation scripts</li>
+                        <li><i class="fas fa-check"></i> API development & integration</li>
                     </ul>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-brain"></i>
+                        <i class="fas fa-code"></i>
                     </div>
-                    <h3>AI & Machine Learning Solutions</h3>
-                    <p>State-of-the-art AI/ML projects with model training, optimization, and real-world implementation for cutting-edge applications and research.</p>
+                    <h3>HTML/CSS/JavaScript</h3>
+                    <p>Responsive, modern websites and web applications with pixel-perfect design and smooth interactions.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Responsive frontend development</li>
+                        <li><i class="fas fa-check"></i> Interactive UI components</li>
+                        <li><i class="fas fa-check"></i> Modern animations & effects</li>
+                        <li><i class="fas fa-check"></i> Cross-browser compatibility</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Flask & SQL Projects</h3>
+                    <p>Full-stack web applications with robust database integration and secure backend architecture.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Flask web applications</li>
+                        <li><i class="fas fa-check"></i> SQL database design</li>
+                        <li><i class="fas fa-check"></i> RESTful APIs</li>
+                        <li><i class="fas fa-check"></i> Authentication & security</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI & ML Based Projects</h3>
+                    <p>State-of-the-art AI/ML projects with model training, optimization, and real-world implementation.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Custom AI/ML model development</li>
-                        <li><i class="fas fa-check"></i> Data preprocessing, visualization & analysis</li>
-                        <li><i class="fas fa-check"></i> Model training, tuning & performance optimization</li>
-                        <li><i class="fas fa-check"></i> Deployment & integration support</li>
-                        <li><i class="fas fa-check"></i> Research-grade implementations</li>
+                        <li><i class="fas fa-check"></i> Data preprocessing & analysis</li>
+                        <li><i class="fas fa-check"></i> Model training & tuning</li>
+                        <li><i class="fas fa-check"></i> Deployment & integration</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Custom Final Year Projects</h3>
+                    <p>End-to-end development tailored to your requirements with complete documentation and guidance.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Custom requirements analysis</li>
+                        <li><i class="fas fa-check"></i> Complete source code</li>
+                        <li><i class="fas fa-check"></i> Detailed documentation</li>
+                        <li><i class="fas fa-check"></i> Free installation & setup</li>
                     </ul>
                 </div>
 
@@ -1021,14 +1078,13 @@
                     <div class="service-icon">
                         <i class="fas fa-file-alt"></i>
                     </div>
-                    <h3>Premium Research Paper Writing</h3>
-                    <p>High-quality, publication-ready research papers with 0% AI detection guarantee and minimal plagiarism, crafted by subject matter experts.</p>
+                    <h3>Research Paper Support</h3>
+                    <p>High-quality, publication-ready research papers with 0% AI detection guarantee and minimal plagiarism.</p>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> **0% AI detection guarantee**</li>
-                        <li><i class="fas fa-check"></i> Less than 10% plagiarism (Turnitin checked)</li>
-                        <li><i class="fas fa-check"></i> Journal/conference ready formatting</li>
-                        <li><i class="fas fa-check"></i> Any domain expertise (AI/ML/Web/Cybersecurity)</li>
-                        <li><i class="fas fa-check"></i> Citation & reference management</li>
+                        <li><i class="fas fa-check"></i> Less than 10% plagiarism</li>
+                        <li><i class="fas fa-check"></i> IEEE/Journal ready format</li>
+                        <li><i class="fas fa-check"></i> Turnitin reports included</li>
                     </ul>
                 </div>
             </div>
@@ -1038,138 +1094,105 @@
     <section class="section" id="pricing">
         <div class="container">
             <div class="section-title">
-                <h2>Transparent Premium Pricing</h2>
-                <p>Professional solutions at competitive prices. All packages include free installation, setup, deployment, and support.</p>
+                <h2>Transparent Pricing Plans</h2>
+                <p>Professional solutions at competitive prices. All packages include free installation, setup, deployment, and 7 days support.</p>
             </div>
 
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-header">
-                        <h3>Mini Project</h3>
-                        <div class="price">₹2,500<small>/project</small></div>
-                        <p>Perfect for foundational academic projects</p>
+                        <h3>Software Projects</h3>
+                        <div class="price">₹5,000- ₹8,000<small>  </small></div>
+                        <p>Based on project complexity</p>
                     </div>
                     
                     <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Fully working project</li>
-                        <li><i class="fas fa-check"></i> Free installation & setup</li>
-                        <li><i class="fas fa-check"></i> Detailed live explanation</li>
-                        <li><i class="fas fa-check"></i> Free Render deployment</li>
-                        <li><i class="fas fa-check"></i> Basic documentation</li>
-                        <li class="disabled"><i class="fas fa-times"></i> Research paper included</li>
-                        <li class="disabled"><i class="fas fa-times"></i> Advanced features/AI/ML</li>
+                        <li><i class="fas fa-check"></i> Free installation after completion</li>
+                        <li><i class="fas fa-check"></i> 7 days support after installation</li>
+                        <li><i class="fas fa-check"></i> Minor changes allowed within 7 days</li>
+                        <li><i class="fas fa-check"></i> Complete source code provided</li>
+                        <li><i class="fas fa-check"></i> Project documentation included</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Major changes after delivery</li>
                     </ul>
                     
-                    <a href="#contact" class="btn btn-primary">Order Now</a>
+                    <a href="#contact" class="btn btn-primary">Inquire Now</a>
                 </div>
 
-                
                 <div class="pricing-card">
                     <div class="pricing-header">
-                        <h3>Major Project</h3>
-                        <div class="price">₹3,500<small>/project</small></div>
-                        <p>Ideal for advanced feature-rich projects</p>
+                        <h3>Research Paper</h3>
+                        <div class="price">₹2,000</div>
+                        <p>IEEE standard formatting</p>
                     </div>
                     
                     <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Fully working **advanced** project</li>
-                        <li><i class="fas fa-check"></i> Free installation & setup</li>
-                        <li><i class="fas fa-check"></i> Detailed live explanation</li>
-                        <li><i class="fas fa-check"></i> Free Render deployment</li>
-                        <li><i class="fas fa-check"></i> **Comprehensive documentation**</li>
-                        <li class="disabled"><i class="fas fa-times"></i> Research paper included</li>
-                        <li class="disabled"><i class="fas fa-times"></i> AI/ML components</li>
+                        <li><i class="fas fa-check"></i> Turnitin AI Report included</li>
+                        <li><i class="fas fa-check"></i> Turnitin Plagiarism Report</li>
+                        <li><i class="fas fa-check"></i> 100% AI & Plagiarism Free</li>
+                        <li><i class="fas fa-check"></i> IEEE conference/journal ready</li>
+                        <li><i class="fas fa-check"></i> Citation & reference management</li>
+                        <li><i class="fas fa-check"></i> Free reports included</li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn btn-primary">Inquire Now</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Turnitin Report Only</h3>
+                        <div class="price">₹200</div>
+                        <p>Instant reports</p>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> AI Detection Report</li>
+                        <li><i class="fas fa-check"></i> Plagiarism Report</li>
+                        <li><i class="fas fa-check"></i> 24 hour turnaround</li>
+                        <li><i class="fas fa-check"></i> Both reports included</li>
+                        <li><i class="fas fa-check"></i> PDF format download</li>
+                        <li><i class="fas fa-check"></i> Unlimited revisions</li>
                     </ul>
                     
                     <a href="#contact" class="btn btn-primary">Order Now</a>
                 </div>
-<div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>AI/ML Project</h3>
-                        <div class="price">₹4,500<small>/project</small></div>
-                        <p>State-of-the-art AI/ML solutions</p>
-                    </div>
-                    
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Full **AI/ML featured** project</li>
-                        <li><i class="fas fa-check"></i> Model training & optimization</li>
-                        <li><i class="fas fa-check"></i> Free installation & explanation</li>
-                        <li><i class="fas fa-check"></i> Free cloud deployment</li>
-                        <li><i class="fas fa-check"></i> Dataset preprocessing included</li>
-                        <li><i class="fas fa-check"></i> Comprehensive documentation</li>
-                        <li class="disabled"><i class="fas fa-times"></i> Research paper included</li>
-                    </ul>
-                    
-                    <a href="#contact" class="btn btn-primary">Order Now</a>
-                </div>
-<div class="pricing-card popular">
-                    <div class="pricing-header">
-                        <h3>Mini Project + Paper Combo</h3>
-                        <div class="price">₹3,500<small>/combo</small></div>
-                        <p class="combo-price">Save ₹500 on paper!</p>
-                    </div>
-                    
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> **Small Project** features included</li>
-                        <li><i class="fas fa-check"></i> **Research Paper** included (₹1,500 value)</li>
-                        <li><i class="fas fa-check"></i> **0% AI detection** guarantee</li>
-                        <li><i class="fas fa-check"></i> Less than 10% plagiarism</li>
-                        <li><i class="fas fa-check"></i> Free installation & deployment</li>
-                        <li><i class="fas fa-check"></i> Detailed live explanation</li>
-                        <li><i class="fas fa-check"></i> Comprehensive documentation</li>
-                    </ul>
-                    
-                    <a href="#contact" class="btn btn-primary" style="background: var(--gradient-premium); color: #000;">Get Best Value</a>
-                </div>
-
-
-
-                <div class="pricing-card popular">
-                    <div class="pricing-header">
-                        <h3>Major Project + Paper Combo</h3>
-                        <div class="price">₹4,000<small>/combo</small></div>
-                        <p class="combo-price">Save ₹1,000 on paper!</p>
-                    </div>
-                    
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> **Big Project** features included</li>
-                        <li><i class="fas fa-check"></i> **Research Paper** included (₹1,500 value)</li>
-                        <li><i class="fas fa-check"></i> **0% AI detection** guarantee</li>
-                        <li><i class="fas fa-check"></i> Less than 10% plagiarism</li>
-                        <li><i class="fas fa-check"></i> Free installation & deployment</li>
-                        <li><i class="fas fa-check"></i> Detailed live explanation</li>
-                        <li><i class="fas fa-check"></i> Comprehensive documentation</li>
-                    </ul>
-                    
-                    <a href="#contact" class="btn btn-primary" style="background: var(--gradient-premium); color: #000;">Get Best Value</a>
-                </div>
-                
-                
-
-                <div class="pricing-card popular">
-                    <div class="pricing-header">
-                        <h3>AI/ML Project + Paper Combo</h3>
-                        <div class="price">₹5,000<small>/combo</small></div>
-                        <p class="combo-price">Save ₹500 on paper!</p>
-                    </div>
-                    
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> **AI/ML Project** features included</li>
-                        <li><i class="fas fa-check"></i> **Research Paper** included (₹1,500 value)</li>
-                        <li><i class="fas fa-check"></i> **0% AI detection** guarantee</li>
-                        <li><i class="fas fa-check"></i> Less than 10% plagiarism</li>
-                        <li><i class="fas fa-check"></i> Free installation & deployment</li>
-                        <li><i class="fas fa-check"></i> Detailed live explanation</li>
-                        <li><i class="fas fa-check"></i> Comprehensive documentation</li>
-                    </ul>
-                    
-                    <a href="#contact" class="btn btn-primary" style="background: var(--gradient-premium); color: #000;">Get Best Value</a>
-                </div>
-                
-                            </div>
+            </div>
             
             <div style="text-align: center; margin-top: 50px;">
-                <p style="color: var(--gray-text); font-size: 1.1rem;">Custom projects and enterprise solutions available. <a href="#contact" style="color: var(--accent-teal); text-decoration: underline;">Contact us for quotes</a></p>
+                <p style="color: var(--gray-text); font-size: 1.1rem;">Custom projects and combo packages available. <a href="#contact" style="color: var(--accent-teal); text-decoration: underline;">Contact us for special pricing</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About GVprojects</h2>
+                <p>Your trusted partner for software and research solutions since 2023</p>
+            </div>
+            
+            <div style="background: var(--card-bg); border-radius: var(--border-radius); padding: 60px; border: 1px solid rgba(255,255,255,0.05);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+                    <div>
+                        <h3 style="font-size: 2rem; margin-bottom: 30px; color: var(--accent-teal);">Why Choose Us?</h3>
+                        <p style="color: var(--gray-text); margin-bottom: 25px; font-size: 1.1rem;">GVprojects is a trusted software and research service provider built on quality, originality, and student satisfaction. We focus on delivering excellence with every project.</p>
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-check-circle" style="color: var(--success-green); font-size: 1.3rem;"></i> Affordable pricing for students</li>
+                            <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-check-circle" style="color: var(--success-green); font-size: 1.3rem;"></i> Transparent and structured workflow</li>
+                            <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-check-circle" style="color: var(--success-green); font-size: 1.3rem;"></i> On-time delivery guaranteed</li>
+                            <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-check-circle" style="color: var(--success-green); font-size: 1.3rem;"></i> Dedicated technical support</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 2rem; margin-bottom: 30px; color: var(--accent-teal);">Our Commitment</h3>
+                        <p style="color: var(--gray-text); margin-bottom: 25px; font-size: 1.1rem;">We ensure every project meets rigorous standards – from code quality to research integrity. Your success is our mission.</p>
+                        <ul style="list-style: none;">
+                            <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-check-circle" style="color: var(--success-green); font-size: 1.3rem;"></i> Free installation assistance</li>
+                            <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-check-circle" style="color: var(--success-green); font-size: 1.3rem;"></i> 7 days post-installation support</li>
+                            <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-check-circle" style="color: var(--success-green); font-size: 1.3rem;"></i> Minor modifications allowed within 7 days</li>
+                            <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-check-circle" style="color: var(--success-green); font-size: 1.3rem;"></i> 100% plagiarism-free & AI-safe content</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1185,13 +1208,13 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                            <i class="fab fa-whatsapp"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Call Us Directly</h4>
-                            <p>Speak with our project consultant</p>
-                            <a href="tel:9885347542">+91 98853 47542</a>
-                            <p style="margin-top: 10px;">**Availability:** Mon-Sun, 9 AM - 10 PM</p>
+                            <h4>WhatsApp</h4>
+                            <p>Instant messaging for quick queries</p>
+                            <a href="https://wa.me/919885347542" target="_blank">+91 98853 47542</a>
+                            <p style="margin-top: 10px;">**Response:** Within 1 hour</p>
                         </div>
                     </div>
                     
@@ -1203,21 +1226,11 @@
                             <h4>Email Us</h4>
                             <p>Send your project requirements</p>
                             <a href="mailto:gvprojects8@gmail.com">gvprojects8@gmail.com</a>
-                            <p style="margin-top: 10px;">**Response Time:** Within 2 hours</p>
+                            <p style="margin-top: 10px;">**Response:** Within 2 hours</p>
                         </div>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>WhatsApp Business</h4>
-                            <p>Instant messaging for quick queries</p>
-                            <a href="https://wa.me/919885347542" target="_blank">Chat on WhatsApp</a>
-                            <p style="margin-top: 10px;">**Quick Support:** Document sharing available</p>
-                        </div>
-                    </div>
+                                        </div>
                 </div>
             </div>
         </section>
@@ -1227,8 +1240,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Projects Hub</h3>
-                    <p style="color: var(--gray-text); margin-bottom: 25px;">Delivering excellence in projects, AI solutions, and research papers with professional guidance and premium support since 2023.</p>
+                    <h3>GVprojects</h3>
+                    <p style="color: var(--gray-text); margin-bottom: 25px;">Professional software and research solutions provider dedicated to quality, originality, and student satisfaction since 2023.</p>
                     
                     <div style="display: flex; gap: 15px; margin-top: 20px;">
                         <a href="https://wa.me/919885347542" target="_blank" class="btn btn-secondary" style="padding: 12px 20px; font-size: 0.9rem;">
@@ -1246,37 +1259,35 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#services">Our Services</a></li>
                         <li><a href="#pricing">Pricing Plans</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                        
+                        <li><a href="#about">About Us</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Our Services</h3>
+                    <h3>Technologies</h3>
                     <ul class="footer-links">
-                        <li><a href="#services">Project Development</a></li>
+                        <li><a href="#services">Python Development</a></li>
+                        <li><a href="#services">HTML/CSS/JavaScript</a></li>
+                        <li><a href="#services">Flask & SQL</a></li>
                         <li><a href="#services">AI/ML Projects</a></li>
                         <li><a href="#services">Research Papers</a></li>
-                        <li><a href="#services">Deployment & Setup</a></li>
-                        <li><a href="#services">Project Consultation</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-teal);"></i> <a href="tel:9885347542">+91 98853 47542</a></li>
+                        <li><i class="fab fa-whatsapp" style="margin-right: 10px; color: var(--accent-teal);"></i> <a href="https://wa.me/919885347542">+91 98853 47542</a></li>
                         <li><i class="fas fa-envelope" style="margin-right: 10px; color: var(--accent-teal);"></i> <a href="mailto:gvprojects8@gmail.com">gvprojects8@gmail.com</a></li>
                         <li><i class="fas fa-clock" style="margin-right: 10px; color: var(--accent-teal);"></i> Mon-Sun: 9 AM - 10 PM</li>
-                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent-teal);"></i> Serving Nationwide</li>
+                        <li><i class="fas fa-globe" style="margin-right: 10px; color: var(--accent-teal);"></i> Serving Nationwide</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>Premium Project & Research Solutions</p>
-                <p style="margin-top: 15px; font-size: 0.95rem;">Professional & Trusted Service | 0% AI Detection Guarantee| Free Installation & Deployment</p>
-                <p style="margin-top: 10px; font-size: 0.9rem; color: var(--premium-gold);">Dedicated Instagram AI integration & advanced analytics coming soon!</p>
+                <p>© 2026 GVprojects | All Rights Reserved</p>
+                <p style="margin-top: 15px; font-size: 0.95rem;">Professional & Trusted Service | 0% AI Detection Guarantee | Free Installation & Deployment</p>
             </div>
         </div>
     </footer>
@@ -1329,18 +1340,7 @@
             });
         });
         
-        // Form submission handler (Removed, but keeping the structure for potential future use or links)
-        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
-            if (btn.getAttribute('href') === '#contact') {
-                btn.addEventListener('click', function(e) {
-                    // Prevent default action if it's a generic link to contact
-                    // e.preventDefault(); 
-                    // Add logic here if you want a modal or direct contact window instead of scrolling
-                });
-            }
-        });
-        
-        // Add animation to service cards on scroll
+        // Add animation to cards on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1365,5 +1365,3 @@
     </script>
 </body>
 </html>
-
-
