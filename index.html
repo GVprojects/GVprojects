@@ -195,50 +195,6 @@
     }
 
     /* ═══════════════════════════════════════
-       VOICE GREETING TOAST
-    ═══════════════════════════════════════ */
-    #voice-toast {
-      position: fixed;
-      top: calc(var(--nav-h) + 20px);
-      left: 50%;
-      transform: translateX(-50%) translateY(-30px);
-      z-index: 9999;
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(79,70,229,0.25);
-      border-radius: 24px;
-      padding: 18px 32px;
-      color: var(--text);
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 1.1rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(79,70,229,0.1);
-      opacity: 0;
-      transition: opacity 0.8s cubic-bezier(0.34,1.56,0.64,1), transform 0.8s cubic-bezier(0.34,1.56,0.64,1);
-      pointer-events: none;
-      text-align: center;
-      max-width: 90%;
-      min-width: 300px;
-    }
-    #voice-toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-    #voice-toast .highlight { color: var(--carrot); }
-    #voice-toast .emoji { font-size: 1.4rem; margin-right: 8px; }
-    #voice-toast .sub {
-      font-weight: 400; font-size: 0.8rem;
-      color: var(--text-dim); margin-top: 6px;
-      font-family: var(--font-body);
-    }
-    .wave { display: inline-block; animation: wave 1.2s ease-in-out infinite; }
-    @keyframes wave {
-      0%,100% { transform: rotate(0deg); }
-      25%  { transform: rotate(20deg); }
-      75%  { transform: rotate(-20deg); }
-    }
-
-    /* ═══════════════════════════════════════
        CHAT BUBBLE
     ═══════════════════════════════════════ */
     .chat-bubble {
@@ -1089,7 +1045,6 @@
       .social-link { padding: 11px 20px; font-size: 0.82rem; }
       .modal-content { padding: 32px 22px; }
       .modal-content h2 { font-size: 1.5rem; }
-      #voice-toast { top: calc(var(--nav-h) + 12px); padding: 14px 18px; font-size: 0.88rem; min-width: unset; width: 90%; }
       .chat-bubble { bottom: 80px; left: 14px; padding: 8px 16px; font-size: 0.75rem; }
       .chat-bubble .badge { display: none; }
       .stat-item::after { display: none; }
@@ -1128,11 +1083,7 @@
   <span>Chat with us</span>
   <span class="badge">Live</span>
 </div>
-
-<!-- VOICE GREETING TOAST -->
-<div id="voice-toast"></div>
-
-<!-- COMING SOON MODAL -->
+`r`n<!-- COMING SOON MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-content">
     <div class="modal-icon"><i class="fas fa-video"></i></div>
@@ -1255,7 +1206,6 @@
       <span class="marquee-dot"></span>
     </div>
   </div>
-
   <!-- ═══ ABOUT ═══ -->
   <section class="section-pad" id="about">
     <div class="container">
@@ -1587,10 +1537,7 @@ let lookX = 0;
 let lookY = 0;
 let lastBrandingSweep = 0;
 let lastSplinePointer = 0;
-let isPageScrolling = false;
-let scrollIdleTimer = null;
-let hasCursorMovement = false;
-let ignoreMouseUntil = 0;
+let pointerDirty = false;
 
 function hideSplineBranding() {
   if (!splineEl) return;
@@ -1628,7 +1575,7 @@ if (splineEl) {
 function updateSplineTransform() {
   if (!splineBg) return;
   splineBg.style.transform = 'none';
-  splineBg.style.opacity = splineOpacity;
+  splineBg.style.opacity = '1';
   splineBg.style.visibility = 'visible';
 }
 
@@ -1718,30 +1665,40 @@ function sendSplinePointer(clientX, clientY) {
   }
 }
 
-// Track mouse position for robot head movement
-document.addEventListener('mousemove', e => {
-  if (isPageScrolling) return;
-  const movedByHand = Math.abs(e.movementX || 0) + Math.abs(e.movementY || 0) > 0;
-  if (!movedByHand || performance.now() < ignoreMouseUntil) return;
-  lookTargetX = clamp((e.clientX / window.innerWidth) * 2 - 1, -0.82, 0.82);
-  lookTargetY = clamp((e.clientY / window.innerHeight) * 2 - 1, -0.35, 0.58);
-  hasCursorMovement = true;
-});
+// Cursor head tracking is limited to the first hero section only.
+function isHeroCursorZone() {
+  const hero = document.getElementById('home');
+  if (!hero) return window.scrollY < window.innerHeight;
+  const rect = hero.getBoundingClientRect();
+  return rect.bottom > varNavHeight();
+}
+
+function varNavHeight() {
+  return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+}
+
+function updateRobotLookFromGlobalCursor() {
+  if (!isHeroCursorZone() || (!mouseX && !mouseY)) {
+    pointerDirty = false;
+    return;
+  }
+  lookTargetX = clamp((mouseX / window.innerWidth) * 2 - 1, -0.82, 0.82);
+  lookTargetY = clamp((mouseY / window.innerHeight) * 2 - 1, -0.35, 0.58);
+  pointerDirty = true;
+}
 
 function animateSplineCursor() {
-  if (!isPageScrolling && hasCursorMovement) {
+  updateRobotLookFromGlobalCursor();
+  if (pointerDirty) {
     lookX += (lookTargetX - lookX) * 0.12;
     lookY += (lookTargetY - lookY) * 0.12;
   }
   const clientX = (lookX + 1) * 0.5 * window.innerWidth;
   const clientY = (lookY + 1) * 0.5 * window.innerHeight;
   const now = performance.now();
-  if (!isPageScrolling && hasCursorMovement && now - lastSplinePointer > 24) {
+  if (pointerDirty && now - lastSplinePointer > 24) {
     sendSplinePointer(clientX, clientY);
     lastSplinePointer = now;
-    if (Math.abs(lookTargetX - lookX) < 0.003 && Math.abs(lookTargetY - lookY) < 0.003) {
-      hasCursorMovement = false;
-    }
   }
   updateSplineTransform();
   if (now - lastBrandingSweep > 700) {
@@ -1763,13 +1720,6 @@ const backTopEl  = document.getElementById('back-top');
 window.addEventListener('scroll', () => {
   const sy  = window.scrollY;
   const max = document.body.scrollHeight - window.innerHeight;
-  isPageScrolling = true;
-  hasCursorMovement = false;
-  clearTimeout(scrollIdleTimer);
-  scrollIdleTimer = setTimeout(() => {
-    isPageScrolling = false;
-    ignoreMouseUntil = performance.now() + 260;
-  }, 160);
 
   // Scrolling must not change the robot or cursor target.
   splineScale = 1;
@@ -1864,43 +1814,35 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 /* ══════════════════════════════════════════════════
    VOICE GREETING
 ══════════════════════════════════════════════════ */
-function showVoiceGreeting() {
-  const toast = document.getElementById('voice-toast');
+function getGreetingText() {
   const h = new Date().getHours();
-  const greetings = [
-    [5,  12, 'Good Morning!',   '🌅'],
-    [12, 17, 'Good Afternoon!', '☀️'],
-    [17, 21, 'Good Evening!',   '🌇'],
-    [21, 24, 'Good Night!',     '🌙'],
-    [0,  5,  'Good Night!',     '🌙'],
-  ];
-  let [greeting, emoji] = ['Hello!', '👋'];
-  for (const [s, e, g, em] of greetings) {
-    if (h >= s && h < e) { greeting = g; emoji = em; break; }
-  }
-  toast.innerHTML = `
-    <div>
-      <span class="emoji">${emoji}</span>
-      ${greeting} I'm the <span class="highlight">GVprojects</span> assistant.
-      <span class="wave">👋</span>
-    </div>
-    <div class="sub">🤖 Let's build something amazing! Click any project folder to explore.</div>
-  `;
-  toast.classList.add('show');
-  if ('speechSynthesis' in window) {
-    const u = new SpeechSynthesisUtterance(
-      `${greeting} I'm the GVprojects assistant. Let's build something amazing together!`
-    );
-    u.rate = 0.94; u.pitch = 1.05; u.volume = 1; u.lang = 'en-US';
-    const voices = speechSynthesis.getVoices();
-    const pref = voices.find(v => v.lang.startsWith('en') && v.name.includes('Google')) || voices[0];
-    if (pref) u.voice = pref;
-    speechSynthesis.speak(u);
-  }
-  setTimeout(() => toast.classList.remove('show'), 8500);
+  if (h >= 5 && h < 12) return 'Good morning';
+  if (h >= 12 && h < 17) return 'Good afternoon';
+  if (h >= 17 && h < 21) return 'Good evening';
+  return 'Good night';
 }
+
+function speakGreeting() {
+  if (!('speechSynthesis' in window)) return;
+  const greeting = getGreetingText();
+  const message = `${greeting}. Welcome to GVprojects. We build premium software projects and research solutions.`;
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(message);
+  utterance.rate = 0.82;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+  utterance.lang = 'en-US';
+  const voices = speechSynthesis.getVoices();
+  const preferredVoice = voices.find(v => v.lang.startsWith('en') && /Google|Microsoft|Natural|Online/i.test(v.name)) || voices.find(v => v.lang.startsWith('en'));
+  if (preferredVoice) utterance.voice = preferredVoice;
+  speechSynthesis.speak(utterance);
+}
+
 if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
-window.addEventListener('load', () => setTimeout(showVoiceGreeting, 900));
+window.addEventListener('load', () => {
+  updateSplineTransform();
+  setTimeout(speakGreeting, 900);
+});
 
 /* ══════════════════════════════════════════════════
    MOBILE MENU
