@@ -1049,6 +1049,107 @@
       .chat-bubble .badge { display: none; }
       .stat-item::after { display: none; }
     }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE POLISH — ALL SCREENS
+    ═══════════════════════════════════════ */
+    @media (min-width: 1400px) {
+      .container, .hero-inner { max-width: 1280px; }
+      .hero h1 { font-size: clamp(4.2rem, 4.6vw, 5.4rem); }
+      .hero p { font-size: 1.12rem; max-width: 560px; }
+    }
+
+    @media (max-width: 1180px) {
+      header { padding: 0 28px; }
+      .nav-links { gap: 22px; }
+      .nav-cta { padding-inline: 22px; }
+      .hero { padding-inline: 32px; }
+      .hero h1 { font-size: clamp(3rem, 6.2vw, 4.45rem); }
+      .section-pad { padding: 92px 32px; }
+      .folder-grid, .services-grid, .pricing-grid { gap: 20px; }
+      .price { font-size: 2.15rem; }
+    }
+
+    @media (max-width: 900px) {
+      :root { --nav-h: 68px; }
+      header { padding: 0 22px; }
+      .logo { min-width: auto; }
+      .brand-logo-img { height: 58px; max-width: 176px; }
+      .hero {
+        min-height: 92vh;
+        align-items: flex-start;
+        padding: calc(var(--nav-h) + 44px) 26px 58px;
+        background:
+          linear-gradient(180deg, rgba(10,10,10,0.68) 0%, rgba(10,10,10,0.9) 100%),
+          radial-gradient(circle at 50% 22%, rgba(79,70,229,0.16), transparent 54%);
+      }
+      .hero-text { max-width: 620px; margin: 0 auto; text-align: center; }
+      .hero h1 { font-size: clamp(2.55rem, 8.5vw, 4rem); line-height: 1.06; }
+      .hero p { margin-inline: auto; font-size: 1rem; line-height: 1.7; }
+      .hero-btns, .hero-stats { justify-content: center; }
+      .about-grid, .services-grid, .folder-grid, .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { gap: 34px; }
+      .section-title { letter-spacing: 0; }
+      .section-sub { margin-bottom: 42px; }
+      .social-link { min-width: 190px; justify-content: center; }
+      #spline-brand-shield { width: 180px; height: 62px; }
+    }
+
+    @media (max-width: 720px) {
+      body { min-width: 0; }
+      .orb { filter: blur(90px); opacity: 0.72; }
+      .orb-1, .orb-2 { width: 360px; height: 360px; }
+      .orb-3 { display: none; }
+      header { padding: 0 16px; }
+      .brand-logo-img { height: 52px; max-width: 154px; }
+      .mobile-menu-btn { width: 42px; height: 42px; align-items: center; justify-content: center; padding: 0; }
+      .mobile-drawer { padding: 18px; }
+      .hero { min-height: 88vh; padding: calc(var(--nav-h) + 34px) 18px 48px; }
+      .hero-label { padding: 7px 16px; font-size: 0.72rem; margin-bottom: 20px; }
+      .hero h1 { font-size: clamp(2.18rem, 11vw, 3.1rem); }
+      .hero p { font-size: 0.95rem; margin-bottom: 26px; }
+      .hero-btns { gap: 10px; }
+      .btn-primary, .btn-outline { width: 100%; justify-content: center; padding: 13px 18px; font-size: 0.9rem; }
+      .hero-stats { gap: 18px; margin-top: 30px; }
+      .stat-item { min-width: 92px; }
+      .stat-num { justify-content: center; font-size: 1.55rem; }
+      .stat-label { font-size: 0.62rem; letter-spacing: 1px; }
+      .marquee-wrap { padding: 10px 0; }
+      .marquee-item { padding: 0 20px; font-size: 0.76rem; }
+      .section-pad { padding: 64px 18px; }
+      .section-title { font-size: clamp(1.85rem, 9vw, 2.65rem); }
+      .section-sub { font-size: 0.94rem; line-height: 1.72; margin-bottom: 34px; }
+      .about-grid, .about-highlights, .services-grid, .folder-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .about-text p { font-size: 0.94rem; line-height: 1.78; }
+      .about-image { min-height: 240px; padding: 30px 20px; border-radius: 16px; }
+      .highlight-item, .service-card, .folder-card, .price-card { border-radius: 14px; padding: 26px 20px; }
+      .folder-icon { font-size: 3rem; }
+      .price { font-size: 2rem; }
+      .price small { display: block; margin-top: 4px; }
+      .social-links { flex-direction: column; align-items: stretch; max-width: 360px; margin-inline: auto; }
+      .social-link { width: 100%; min-width: 0; justify-content: center; }
+      .contact-info { font-size: 0.93rem; line-height: 2.05; overflow-wrap: anywhere; }
+      footer { padding: 34px 18px 92px; }
+      .chat-bubble { left: 12px; right: auto; bottom: 18px; padding: 9px 14px; max-width: calc(100vw - 84px); }
+      #back-top { width: 46px; height: 46px; bottom: 18px; right: 14px; }
+      #spline-brand-shield { width: 150px; height: 58px; }
+    }
+
+    @media (max-width: 390px) {
+      :root { --nav-h: 64px; }
+      header { padding: 0 12px; }
+      .brand-logo-img { height: 46px; max-width: 136px; }
+      .hero { padding-inline: 14px; }
+      .hero h1 { font-size: clamp(2rem, 12vw, 2.65rem); }
+      .hero-label { max-width: 100%; white-space: normal; justify-content: center; }
+      .hero-stats { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+      .stat-item:last-child { grid-column: 1 / -1; }
+      .section-pad { padding-inline: 14px; }
+      .modal-content { width: calc(100vw - 28px); padding: 28px 18px; border-radius: 16px; }
+      .modal-icon { font-size: 3.3rem; }
+      .modal-content h2 { font-size: 1.3rem; }
+      .chat-bubble span:not(.badge) { max-width: 112px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
@@ -1083,7 +1184,7 @@
   <span>Chat with us</span>
   <span class="badge">Live</span>
 </div>
-`r`n<!-- COMING SOON MODAL -->
+<!-- COMING SOON MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-content">
     <div class="modal-icon"><i class="fas fa-video"></i></div>
@@ -1822,11 +1923,11 @@ function getGreetingText() {
   return 'Good night';
 }
 
+let greetingStarted = false;
 function speakGreeting() {
-  if (!('speechSynthesis' in window)) return;
+  if (greetingStarted || !('speechSynthesis' in window)) return false;
   const greeting = getGreetingText();
   const message = `${greeting}. Welcome to GVprojects. We build premium software projects and research solutions.`;
-  speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(message);
   utterance.rate = 0.82;
   utterance.pitch = 1;
@@ -1835,10 +1936,27 @@ function speakGreeting() {
   const voices = speechSynthesis.getVoices();
   const preferredVoice = voices.find(v => v.lang.startsWith('en') && /Google|Microsoft|Natural|Online/i.test(v.name)) || voices.find(v => v.lang.startsWith('en'));
   if (preferredVoice) utterance.voice = preferredVoice;
+  utterance.onstart = () => { greetingStarted = true; };
+  utterance.onend = () => { greetingStarted = true; };
+  speechSynthesis.cancel();
   speechSynthesis.speak(utterance);
+  return true;
 }
 
-if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+function speakGreetingFromGesture() {
+  speakGreeting();
+  window.removeEventListener('pointerdown', speakGreetingFromGesture);
+  window.removeEventListener('touchstart', speakGreetingFromGesture);
+  window.removeEventListener('keydown', speakGreetingFromGesture);
+}
+
+if ('speechSynthesis' in window) {
+  speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+  window.addEventListener('pointerdown', speakGreetingFromGesture, { once: true, passive: true });
+  window.addEventListener('touchstart', speakGreetingFromGesture, { once: true, passive: true });
+  window.addEventListener('keydown', speakGreetingFromGesture, { once: true });
+}
+
 window.addEventListener('load', () => {
   updateSplineTransform();
   setTimeout(speakGreeting, 900);
