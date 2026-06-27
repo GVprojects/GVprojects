@@ -155,6 +155,32 @@
       pointer-events: none;
       background: radial-gradient(circle at 100% 100%, rgba(10,10,10,0.98), rgba(10,10,10,0.9) 62%, rgba(10,10,10,0) 100%);
     }
+    .robot-red-accent {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .robot-red-accent::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 62%;
+      width: min(62vw, 760px);
+      height: min(82vh, 820px);
+      transform: translate(-50%, -42%);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 44%, rgba(255, 24, 24, 0.22) 0%, rgba(185, 0, 0, 0.12) 30%, rgba(90, 0, 0, 0.06) 54%, rgba(255, 0, 0, 0) 74%);
+      filter: blur(28px);
+      mix-blend-mode: screen;
+      opacity: 0.82;
+      animation: redBackGlow 4.8s ease-in-out infinite;
+    }@keyframes redBackGlow {
+      0%, 100% { opacity: 0.52; transform: translate(-50%, -42%) scale(0.98); }
+      50% { opacity: 0.9; transform: translate(-50%, -42%) scale(1.04); }
+    }
 
     /* ═══════════════════════════════════════
        GLOW ORBS – AMBIENT ATMOSPHERE
@@ -1133,6 +1159,7 @@
       .chat-bubble { left: 12px; right: auto; bottom: 18px; padding: 9px 14px; max-width: calc(100vw - 84px); }
       #back-top { width: 46px; height: 46px; bottom: 18px; right: 14px; }
       #spline-brand-shield { width: 150px; height: 58px; }
+      .robot-red-accent::before { left: 50%; width: 92vw; height: 72vh; transform: translate(-50%, -38%); opacity: 0.58; }
     }
 
     @media (max-width: 390px) {
@@ -1149,6 +1176,7 @@
       .modal-icon { font-size: 3.3rem; }
       .modal-content h2 { font-size: 1.3rem; }
       .chat-bubble span:not(.badge) { max-width: 112px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .robot-red-accent::before { height: 64vh; opacity: 0.5; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -1174,9 +1202,15 @@
 
 <!-- SPLINE 4K BACKGROUND -->
 <div id="spline-bg">
-  <spline-viewer url="https://prod.spline.design/udXeY8px04mORmjS/scene.splinecode" id="spline-viewer-el"></spline-viewer>
+  <spline-viewer url="https://prod.spline.design/8gBY0LGiBra005TI/scene.splinecode" id="spline-viewer-el"></spline-viewer>
 </div>
+<div class="robot-red-accent" aria-hidden="true"></div>
 <div id="spline-brand-shield" aria-hidden="true"></div>
+
+
+
+
+
 
 <!-- CHAT BUBBLE -->
 <div class="chat-bubble" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
